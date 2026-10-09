@@ -1,0 +1,309 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0a0a0a;
+  --foreground: #f5f5f4;
+  --ink: #0a0a0a;
+  --paper: #0a0a0a;
+  --carbon: #111111;
+  --graphite: #1a1a1a;
+  --gunmetal: #2a2a2a;
+  --steel: #3f3f3f;
+  --silver: #8a8a8a;
+  --off: #d4d4d4;
+  --red: #e10600;
+  --red-deep: #a60500;
+  --red-dark: #660200;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-ink: var(--ink);
+  --color-carbon: var(--carbon);
+  --color-graphite: var(--graphite);
+  --color-gunmetal: var(--gunmetal);
+  --color-steel: var(--steel);
+  --color-silver: var(--silver);
+  --color-off: var(--off);
+  --color-red: var(--red);
+  --color-red-deep: var(--red-deep);
+  --color-red-dark: var(--red-dark);
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-bebas);
+  --font-serif: var(--font-fraunces);
+  --font-mono: var(--font-space-mono);
+  --font-technical: var(--font-space-grotesk);
+}
+
+html,
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+body {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Grain texture */
+.grain::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  opacity: 0.04;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+/* Red glow */
+.red-glow {
+  box-shadow: 0 0 40px -5px rgba(225, 6, 0, 0.4), 0 0 90px -20px rgba(225, 6, 0, 0.25);
+}
+
+/* Scroll bar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+::-webkit-scrollbar-thumb {
+  background: #262626;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #e10600;
+}
+
+/* Reveal utility (used with intersection observer) */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1), transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Marquee */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee-track {
+  animation: marquee 40s linear infinite;
+  will-change: transform;
+}
+
+/* Red sweep button */
+.btn-sweep {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.btn-sweep::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--red);
+  transform: translateX(-101%);
+  transition: transform 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+}
+.btn-sweep:hover::before {
+  transform: translateX(0);
+}
+
+/* Scan line sweep */
+@keyframes scan {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+.scan-line {
+  animation: scan 3.5s linear infinite;
+}
+
+/* Pulse dot */
+@keyframes pulse-dot {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(1.4);
+  }
+}
+.pulse-dot {
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+/* ───── Editorial / Concept 2 ───── */
+
+/* Thin underline that eases in from left — for editorial links */
+.ink-link {
+  position: relative;
+  display: inline-block;
+}
+.ink-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  height: 1px;
+  width: 100%;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.ink-link:hover::after,
+.ink-link:focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* Editorial image: slow magnify + saturation lift on hover */
+.edit-frame {
+  overflow: hidden;
+  position: relative;
+}
+.edit-frame img,
+.edit-frame .edit-frame-media {
+  transition: transform 2200ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 900ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, filter;
+}
+.edit-frame:hover img,
+.edit-frame:hover .edit-frame-media {
+  transform: scale(1.055);
+  filter: saturate(1.08) contrast(1.03);
+}
+
+/* Figure caption that fades in from below on hover */
+.edit-caption {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.edit-frame:hover .edit-caption,
+.edit-frame:focus-within .edit-caption {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Editorial dot that softly pulses */
+@keyframes dot-breath {
+  0%, 100% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(0.6); opacity: 0.5; }
+}
+.dot-breath {
+  animation: dot-breath 3.4s ease-in-out infinite;
+}
+
+/* Serif marque — reveals the italic alt on hover */
+.serif-swap {
+  position: relative;
+  display: inline-block;
+}
+.serif-swap .default,
+.serif-swap .alt {
+  display: inline-block;
+  transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 500ms ease;
+}
+.serif-swap .alt {
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transform: translateY(0.4em);
+  font-style: italic;
+}
+.serif-swap:hover .default {
+  opacity: 0;
+  transform: translateY(-0.3em);
+}
+.serif-swap:hover .alt {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Editorial quote entrance — soft blur-fade rise */
+@keyframes quoteIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+    filter: blur(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+.quote-in {
+  animation: quoteIn 850ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Module flash */
+@keyframes flashFade {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Text shimmer */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+.shimmer {
+  background: linear-gradient(90deg, #525252 0%, #f5f5f4 50%, #525252 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 6s ease-in-out infinite;
+}
+
+/* Vertical caret for inputs */
+.caret-red {
+  caret-color: var(--red);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
