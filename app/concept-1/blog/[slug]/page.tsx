@@ -363,7 +363,7 @@ export default async function BlogPostPage({
                 <span>Keep reading</span>
               </div>
               <h2 className="font-display text-4xl leading-[0.95] tracking-tight text-off md:text-6xl">
-                MORE FROM THE JOURNAL<span className="text-red">.</span>
+                RELATED ARTICLES<span className="text-red">.</span>
               </h2>
             </div>
             <Link

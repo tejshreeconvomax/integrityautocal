@@ -282,9 +282,9 @@ export default function CeramicCoatingPage() {
               <span>What it is</span>
             </div>
             <h2 className="font-display text-5xl leading-[0.9] tracking-tight text-off md:text-[5.5vw]">
-              A SACRIFICIAL LAYER
+              CERAMIC COATING
               <br />
-              THAT ACTS LIKE ARMOR
+              PROTECTION
               <span className="text-red">.</span>
             </h2>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-silver md:text-lg">
@@ -333,10 +333,10 @@ export default function CeramicCoatingPage() {
             <div className="md:col-span-6">
               <div className="mb-6 flex items-center gap-3 text-[11px] uppercase tracking-[0.4em] text-silver">
                 <span className="h-px w-10 bg-red" />
-                <span>Systems · 03 Tiers</span>
+                <span>Coating packages · 03 options</span>
               </div>
               <h2 className="font-display text-5xl leading-[0.9] tracking-tight text-off md:text-[5.5vw]">
-                PICK THE DURATION<span className="text-red">.</span>
+                CHOOSE YOUR PACKAGE<span className="text-red">.</span>
               </h2>
             </div>
             <p className="md:col-span-6 max-w-md text-base text-silver md:ml-auto md:text-right md:text-lg">
@@ -437,10 +437,10 @@ export default function CeramicCoatingPage() {
             <div>
               <div className="mb-6 flex items-center gap-3 text-[11px] uppercase tracking-[0.4em] text-silver">
                 <span className="h-px w-10 bg-red" />
-                <span>Shop frames</span>
+                <span>Recent ceramic coating work</span>
               </div>
               <h2 className="font-display text-5xl leading-[0.9] tracking-tight text-off md:text-[5vw]">
-                COATED, DOCUMENTED.
+                RECENT CERAMIC COATING WORK.
               </h2>
             </div>
             <Link
@@ -534,9 +534,9 @@ export default function CeramicCoatingPage() {
               <span>Common questions</span>
             </div>
             <h2 className="font-display text-5xl leading-[0.9] tracking-tight text-off md:text-[5vw]">
-              THE QUESTIONS
+              CERAMIC COATING
               <br />
-              WE ANSWER MOST<span className="text-red">.</span>
+              FAQS<span className="text-red">.</span>
             </h2>
             <p className="mt-6 max-w-md text-base text-silver md:text-lg">
               Nothing you'd actually ask about ceramic coating is a trade secret. Here's
@@ -582,10 +582,10 @@ export default function CeramicCoatingPage() {
             <div>
               <div className="mb-6 flex items-center gap-3 text-[11px] uppercase tracking-[0.4em] text-silver">
                 <span className="h-px w-10 bg-red" />
-                <span>Pair with</span>
+                <span>Related services</span>
               </div>
               <h2 className="font-display text-4xl leading-[0.9] tracking-tight text-off md:text-5xl">
-                COMPLEMENTARY MODULES.
+                RELATED SERVICES.
               </h2>
             </div>
             <Link
@@ -629,7 +629,7 @@ export default function CeramicCoatingPage() {
                     <span className="absolute right-3 top-3 h-3 w-3 border-r border-t border-off/70 transition-all duration-500 group-hover:border-red group-hover:h-5 group-hover:w-5" />
 
                     <div className="absolute left-4 top-4 font-mono text-[10px] uppercase tracking-[0.3em] text-off">
-                      Module / {s.id}
+                      Service / {s.id}
                     </div>
                   </div>
 
@@ -690,12 +690,12 @@ export default function CeramicCoatingPage() {
           <div className="md:col-span-8">
             <div className="mb-6 flex items-center gap-3 text-[11px] uppercase tracking-[0.4em] text-silver">
               <span className="h-px w-10 bg-red" />
-              <span>Open file · {new Date().getFullYear()}</span>
+              <span>Request a quote</span>
             </div>
             <h2 className="font-display text-5xl leading-[0.9] tracking-tight text-off md:text-[6vw]">
-              READY TO SPEC
+              REQUEST A CERAMIC
               <br />
-              A COATING<span className="text-red">?</span>
+              COATING QUOTE<span className="text-red">.</span>
             </h2>
             <p className="mt-5 max-w-xl text-base text-silver md:text-lg">
               Tell us about the vehicle, how you use it, and how long you plan to keep it.

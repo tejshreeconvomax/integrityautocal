@@ -200,12 +200,12 @@ export default function RedondoBeachAreaPage() {
             <div className="md:col-span-5">
               <div className="mb-6 flex items-center gap-3 text-[11px] uppercase tracking-[0.4em] text-silver">
                 <span className="h-px w-10 bg-red" />
-                <span>What {area.shortName} gets</span>
+                <span>Why choose our {area.shortName} shop</span>
               </div>
               <h2 className="font-display text-5xl leading-[0.9] tracking-tight text-off md:text-[5.5vw]">
-                SAME SHOP.
+                AUTO DETAILING IN
                 <br />
-                SAME HANDS.
+                REDONDO BEACH
                 <span className="text-red">.</span>
               </h2>
             </div>
@@ -255,12 +255,12 @@ export default function RedondoBeachAreaPage() {
             <div className="md:col-span-6">
               <div className="mb-6 flex items-center gap-3 text-[11px] uppercase tracking-[0.4em] text-silver">
                 <span className="h-px w-10 bg-red" />
-                <span>06 modules · all available in {area.shortName}</span>
+                <span>06 services · available in {area.shortName}</span>
               </div>
               <h2 className="font-display text-5xl leading-[0.9] tracking-tight text-off md:text-[5.5vw]">
-                EVERYTHING WE DO.
+                SERVICES AVAILABLE IN
                 <br />
-                WHERE WE LIVE<span className="text-red">.</span>
+                REDONDO BEACH<span className="text-red">.</span>
               </h2>
             </div>
             <p className="md:col-span-6 max-w-md text-base text-silver md:ml-auto md:text-right md:text-lg">
@@ -315,12 +315,12 @@ export default function RedondoBeachAreaPage() {
             <div className="md:col-span-6">
               <div className="mb-6 flex items-center gap-3 text-[11px] uppercase tracking-[0.4em] text-silver">
                 <span className="h-px w-10 bg-red" />
-                <span>Local record · 55 reviews</span>
+                <span>Customer reviews · 55 total</span>
               </div>
               <h2 className="font-display text-5xl leading-[0.9] tracking-tight text-off md:text-[5.5vw]">
-                WHAT {area.shortName.toUpperCase()}
+                {area.shortName.toUpperCase()}
                 <br />
-                OWNERS SAY<span className="text-red">.</span>
+                CUSTOMER REVIEWS<span className="text-red">.</span>
               </h2>
             </div>
             <div className="flex items-end md:col-span-6 md:justify-end">
@@ -381,10 +381,10 @@ export default function RedondoBeachAreaPage() {
             <div className="md:col-span-7">
               <div className="mb-6 flex items-center gap-3 text-[11px] uppercase tracking-[0.4em] text-silver">
                 <span className="h-px w-10 bg-red" />
-                <span>Mobile radius · South Bay</span>
+                <span>Other areas we serve · South Bay</span>
               </div>
               <h2 className="font-display text-5xl leading-[0.9] tracking-tight text-off md:text-[5.5vw]">
-                WE ALSO COVER<span className="text-red">.</span>
+                OTHER SERVICE AREAS<span className="text-red">.</span>
               </h2>
             </div>
             <p className="md:col-span-5 max-w-md text-base text-silver md:ml-auto md:text-right md:text-lg">
@@ -441,10 +441,10 @@ export default function RedondoBeachAreaPage() {
               <span>Visit the shop</span>
             </div>
             <h2 className="font-display text-5xl leading-[0.9] tracking-tight text-off md:text-[5vw]">
-              DROP IN<span className="text-red">.</span>
+              VISIT OUR SHOP
               <br />
-              OR WE'LL ROLL<br />
-              OUT.
+              OR BOOK MOBILE<br />
+              SERVICE<span className="text-red">.</span>
             </h2>
             <p className="mt-6 max-w-md text-base text-silver md:text-lg">
               In-shop assessments and installs happen in a controlled bay in {area.name}.

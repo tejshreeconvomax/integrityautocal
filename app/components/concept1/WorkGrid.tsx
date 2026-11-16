@@ -74,7 +74,7 @@ export default function WorkGrid() {
               <span>Recent work · 10 selected frames</span>
             </div>
             <h2 className="font-display text-6xl leading-[0.9] tracking-tight text-off md:text-[7vw]">
-              THE EVIDENCE.
+              OUR RECENT WORK.
             </h2>
           </div>
           <div className="md:col-span-6 md:text-right">
@@ -146,7 +146,7 @@ export default function WorkGrid() {
 
                   {/* Frame number top-left */}
                   <span className="absolute left-4 top-4 font-mono text-[10px] uppercase tracking-[0.3em] text-off">
-                    FRAME {shot.meta}
+                    PROJECT {shot.meta}
                   </span>
 
                   {/* Content bottom */}

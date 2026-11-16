@@ -84,10 +84,10 @@ export default function Hero() {
         {/* Headline */}
         <div ref={titleRef} className="transition-transform duration-300 ease-out">
           <h1 className="font-display text-[18vw] leading-[0.82] tracking-tight text-off md:text-[11.5vw]">
-            BUILT FOR
+            PROFESSIONAL
             <br />
             <span className="relative inline-block">
-              THE OBSESSED
+              AUTO CARE
               <span className="absolute -right-6 -top-4 font-mono text-base text-red md:text-xl">
                 ®
               </span>

@@ -59,17 +59,17 @@ export default function CeramicProtocol() {
           <div className="md:col-span-7">
             <div className="mb-6 flex items-center gap-3 text-[11px] uppercase tracking-[0.4em] text-silver">
               <span className="h-px w-10 bg-red" />
-              <span>Protocol · 05 Phases · Documented</span>
+              <span>Our process · 05 steps</span>
             </div>
             <h2 className="font-display text-5xl leading-[0.9] tracking-tight text-off md:text-[5.5vw]">
-              HOW IT GETS
+              CERAMIC COATING
               <br />
-              DONE<span className="text-red">.</span>
+              PROCESS<span className="text-red">.</span>
             </h2>
           </div>
           <p className="md:col-span-5 max-w-md text-base text-silver md:ml-auto md:text-right md:text-lg">
-            Nothing happens off-protocol. Hover any phase on the left to see the detail —
-            every ceramic install runs this exact sequence.
+            Every ceramic coating service follows these five clear steps. Select a step to
+            see what happens.
           </p>
         </div>
 

@@ -22,9 +22,9 @@ export default function CTABanner() {
             <span>Book the shop</span>
           </div>
           <h2 className="font-display text-6xl leading-[0.9] tracking-tight text-off md:text-[7vw]">
-            YOUR CAR,
+            PROTECT YOUR
             <br />
-            PROTECTED<span className="text-red">.</span>
+            VEHICLE<span className="text-red">.</span>
           </h2>
         </div>
 

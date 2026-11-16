@@ -23,9 +23,9 @@ export default function Areas() {
               <span>Service areas · 07 Cities</span>
             </div>
             <h2 className="font-display text-6xl leading-[0.9] tracking-tight text-off md:text-[7vw]">
-              THE SOUTH BAY
+              SERVICE
               <br />
-              WE COVER<span className="text-red">.</span>
+              AREAS<span className="text-red">.</span>
             </h2>
           </div>
           <p className="md:col-span-5 max-w-md text-base text-silver md:ml-auto md:text-right md:text-lg">

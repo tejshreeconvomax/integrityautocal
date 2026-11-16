@@ -20,12 +20,12 @@ export default function Contact() {
         <div className="md:col-span-5">
           <div className="mb-6 flex items-center gap-3 text-[11px] uppercase tracking-[0.4em] text-silver">
             <span className="h-px w-10 bg-red" />
-            <span>Open file · 2026</span>
+            <span>Contact us</span>
           </div>
           <h2 className="font-display text-6xl leading-[0.9] tracking-tight text-off md:text-[6vw]">
-            LET'S GET
+            REQUEST A
             <br />
-            <span className="text-red">STARTED.</span>
+            <span className="text-red">QUOTE.</span>
           </h2>
           <p className="mt-6 max-w-md text-base text-silver md:text-lg">
             Tell us about the vehicle and the result you want. Mike will come back with

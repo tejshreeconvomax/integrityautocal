@@ -8,10 +8,10 @@ export default function Testimonials() {
           <div className="md:col-span-6">
             <div className="mb-6 flex items-center gap-3 text-[11px] uppercase tracking-[0.4em] text-silver">
               <span className="h-px w-10 bg-red" />
-              <span>Owners talking · 55 verified</span>
+              <span>Verified customer reviews · 55 total</span>
             </div>
             <h2 className="font-display text-6xl leading-[0.9] tracking-tight text-off md:text-[7vw]">
-              THE RECORD<span className="text-red">.</span>
+              CUSTOMER REVIEWS<span className="text-red">.</span>
             </h2>
           </div>
           <div className="flex items-end md:col-span-6 md:justify-end">

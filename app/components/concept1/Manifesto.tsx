@@ -50,12 +50,12 @@ export default function Manifesto() {
         <div className="md:col-span-7">
           <div className="mb-6 flex items-center gap-3 text-[11px] uppercase tracking-[0.4em] text-silver">
             <span className="h-px w-10 bg-red" />
-            <span>Manifesto · Why Integrity</span>
+            <span>Why choose Integrity</span>
           </div>
           <h2 className="font-display text-5xl leading-[0.9] tracking-tight text-off md:text-[5.5vw]">
-            CARS ARE NOT
+            WHY CHOOSE
             <br />
-            CONSUMABLES
+            INTEGRITY
             <span className="text-red">.</span>
           </h2>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-silver md:text-lg">

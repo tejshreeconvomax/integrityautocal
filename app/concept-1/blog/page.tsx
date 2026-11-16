@@ -49,12 +49,12 @@ export default function BlogPage() {
             <div className="md:col-span-8">
               <div className="mb-6 flex items-center gap-3 text-[11px] uppercase tracking-[0.4em] text-silver">
                 <span className="h-px w-10 bg-red" />
-                <span>Journal · Notes from the shop floor</span>
+                <span>Blog · Auto care tips and advice</span>
               </div>
               <h1 className="font-display text-[14vw] leading-[0.86] tracking-tight text-off md:text-[9vw]">
-                FIELD
+                AUTO CARE
                 <br />
-                NOTES<span className="text-red">.</span>
+                BLOG<span className="text-red">.</span>
               </h1>
               <p className="mt-6 max-w-xl text-base text-silver md:text-lg">
                 Short writing from inside the shop — ceramic systems, correction logic,
@@ -241,9 +241,9 @@ export default function BlogPage() {
               <span>Shop subscription</span>
             </div>
             <h2 className="font-display text-4xl leading-[0.95] tracking-tight text-off md:text-6xl">
-              NEW ENTRIES, STRAIGHT
+              GET AUTO CARE TIPS
               <br />
-              TO YOUR INBOX<span className="text-red">.</span>
+              BY EMAIL<span className="text-red">.</span>
             </h2>
             <p className="mt-4 max-w-xl text-sm text-silver md:text-base">
               A short email when something new goes up. No sales funnels, no filler.

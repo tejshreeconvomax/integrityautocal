@@ -11,17 +11,17 @@ export default function Process() {
           <div className="md:col-span-5">
             <div className="mb-6 flex items-center gap-3 text-[11px] uppercase tracking-[0.4em] text-silver">
               <span className="h-px w-10 bg-red" />
-              <span>Process · 04 Phases</span>
+              <span>Our process · 04 steps</span>
             </div>
             <h2 className="font-display text-6xl leading-[0.9] tracking-tight text-off md:text-[6.5vw]">
-              SLOW DOWN
+              OUR SERVICE
               <br />
-              TO GO FAST.
+              PROCESS.
             </h2>
           </div>
           <p className="max-w-md text-base text-silver md:col-span-6 md:col-start-7 md:text-lg">
-            The outcome you see is the result of the steps you don't. Here's how a job
-            moves through the shop — and why there's no step we're willing to skip.
+            Every service follows a clear process. Here is how we inspect, prepare, and
+            finish your vehicle.
           </p>
         </div>
 

@@ -36,10 +36,10 @@ export default function ServiceList() {
         <div>
           <div className="mb-6 flex items-center gap-3 text-[11px] uppercase tracking-[0.4em] text-silver">
             <span className="h-px w-10 bg-red" />
-            <span>Services · 06 Modules</span>
+            <span>Services · 06 options</span>
           </div>
           <h2 className="font-display text-6xl leading-[0.9] tracking-tight text-off md:text-[8vw]">
-            THE SHORT LIST<span className="text-red">.</span>
+            OUR SERVICES<span className="text-red">.</span>
           </h2>
         </div>
         <div className="flex items-end gap-10">
@@ -53,8 +53,7 @@ export default function ServiceList() {
             </div>
           </div>
           <div className="hidden max-w-xs text-right text-sm text-silver md:block">
-            Six specialities, honed over hours in the shop. Click any module to see the
-            scope.
+            Choose a service to see what is included.
           </div>
         </div>
       </div>
@@ -108,7 +107,7 @@ export default function ServiceList() {
 
             {/* Giant number */}
             <div className="absolute left-6 top-6 font-mono text-xs uppercase tracking-[0.3em] text-off">
-              <div className="text-silver">MODULE</div>
+              <div className="text-silver">SERVICE</div>
               <div className="mt-1 font-display text-6xl leading-none tracking-tight text-off md:text-7xl">
                 {active.id}
               </div>
@@ -154,7 +153,7 @@ export default function ServiceList() {
         {/* Pod grid */}
         <div className="md:col-span-5">
           <div className="mb-5 flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.3em] text-silver">
-            <span>Select a module</span>
+            <span>Select a service</span>
             <span className="flex items-center gap-2">
               <span className="h-1.5 w-1.5 bg-red pulse-dot" />
               Live preview
