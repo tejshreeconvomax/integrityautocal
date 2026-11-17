@@ -14,13 +14,6 @@ const navLinks = [
 export default function Footer() {
   return (
     <footer className="relative overflow-hidden border-t border-steel/50 bg-ink">
-      {/* Huge wordmark */}
-      <div className="relative overflow-hidden border-b border-steel/50 py-10 md:py-16">
-        <div className="pointer-events-none select-none text-center font-display text-[22vw] leading-[0.8] tracking-tighter text-off/5 md:text-[18vw]">
-          INTEGRITY
-        </div>
-      </div>
-
       <div className="mx-auto grid max-w-[1600px] gap-12 px-6 py-16 md:grid-cols-12 md:px-12">
         <div className="md:col-span-4">
           <Link

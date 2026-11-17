@@ -1,153 +1,53 @@
-"use client";
-
-import { useEffect, useRef } from "react";
+import Image from "next/image";
 import { business } from "../../data/business";
 
+type DetailIcon = "pin" | "clock" | "settings" | "star";
+
+function DetailIcon({ type }: { type: DetailIcon }) {
+  const common = {
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: 1.8,
+    strokeLinecap: "round" as const,
+    strokeLinejoin: "round" as const,
+  };
+
+  if (type === "pin") return <svg viewBox="0 0 24 24" aria-hidden="true"><path {...common} d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z" /><circle {...common} cx="12" cy="10" r="2.5" /></svg>;
+  if (type === "clock") return <svg viewBox="0 0 24 24" aria-hidden="true"><circle {...common} cx="12" cy="12" r="8.5" /><path {...common} d="M12 7v5l3 2" /></svg>;
+  if (type === "settings") return <svg viewBox="0 0 24 24" aria-hidden="true"><circle {...common} cx="12" cy="12" r="3" /><path {...common} d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06-2.3 2.3-.07-.06a1.7 1.7 0 0 0-1.87-.34 1.7 1.7 0 0 0-1.04 1.56v.1h-3.25v-.1a1.7 1.7 0 0 0-1.04-1.56 1.7 1.7 0 0 0-1.87.34l-.07.06-2.3-2.3.06-.06A1.7 1.7 0 0 0 6.4 15a1.7 1.7 0 0 0-1.56-1.04h-.1v-3.25h.1A1.7 1.7 0 0 0 6.4 9.67a1.7 1.7 0 0 0-.34-1.87L6 7.73l2.3-2.3.06.06a1.7 1.7 0 0 0 1.88.34 1.7 1.7 0 0 0 1.04-1.56v-.1h3.25v.1a1.7 1.7 0 0 0 1.04 1.56 1.7 1.7 0 0 0 1.87-.34l.07-.06 2.3 2.3-.06.07a1.7 1.7 0 0 0-.34 1.87 1.7 1.7 0 0 0 1.56 1.04h.1v3.25h-.1A1.7 1.7 0 0 0 19.4 15Z" /></svg>;
+  return <svg viewBox="0 0 24 24" aria-hidden="true"><path {...common} d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L3 9.6l6.2-.9L12 3Z" /></svg>;
+}
+
+const details: { icon: DetailIcon; label: string; value: string }[] = [
+  { icon: "pin", label: "Location", value: `${business.city}, ${business.state}` },
+  { icon: "clock", label: "Hours", value: "09:00 — 18:00 · Daily" },
+  { icon: "settings", label: "Services", value: "06 Specialized" },
+  { icon: "star", label: "Reviews", value: "55+ Excellent" },
+];
+
 export default function Hero() {
-  const bgRef = useRef<HTMLDivElement>(null);
-  const titleRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    let raf = 0;
-    const onMove = (e: MouseEvent) => {
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() => {
-        const x = (e.clientX / window.innerWidth - 0.5) * 2;
-        const y = (e.clientY / window.innerHeight - 0.5) * 2;
-        if (bgRef.current) {
-          bgRef.current.style.transform = `translate3d(${x * -14}px, ${y * -10}px, 0) scale(1.08)`;
-        }
-        if (titleRef.current) {
-          titleRef.current.style.transform = `translate3d(${x * 6}px, ${y * 4}px, 0)`;
-        }
-      });
-    };
-    window.addEventListener("mousemove", onMove);
-    return () => {
-      window.removeEventListener("mousemove", onMove);
-      cancelAnimationFrame(raf);
-    };
-  }, []);
-
   return (
-    <section className="relative isolate flex min-h-screen flex-col overflow-hidden">
-      {/* Background image */}
-      <div
-        ref={bgRef}
-        className="absolute inset-0 -z-10 transition-transform duration-[1200ms] ease-out"
-        style={{
-          backgroundImage:
-            "url('https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=2400&q=80')",
-          backgroundSize: "cover",
-          backgroundPosition: "center 55%",
-        }}
-      />
+    <section className="relative isolate overflow-hidden bg-[#070707] text-off">
+      <div className="absolute inset-0 -z-20 bg-[radial-gradient(circle_at_82%_32%,rgba(132,4,4,.46),transparent_35%),linear-gradient(105deg,#070707_0%,#0e0808_51%,#2c0405_100%)]" />
+      <Image src="/cinematic-red-supercar-hero-clean.png" alt="Red sports car in a studio" fill priority sizes="100vw" className="pointer-events-none -z-10 object-cover object-[68%_center]" />
+      <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,#070707_0%,rgba(7,7,7,.96)_27%,rgba(7,7,7,.48)_51%,rgba(7,7,7,.12)_76%,rgba(7,7,7,.4)_100%)]" />
+      <div className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(7,7,7,.38)_0%,rgba(7,7,7,.58)_58%,rgba(7,7,7,.18)_100%)] md:hidden" />
+      <div className="absolute inset-x-0 bottom-0 -z-10 h-2/5 bg-gradient-to-t from-[#070707] via-[#070707]/72 to-transparent" />
 
-      {/* Overlays */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-ink/80 via-ink/55 to-ink" />
-      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-ink/90 via-transparent to-ink/40" />
-
-      {/* Red flare */}
-      <div className="pointer-events-none absolute -right-40 top-1/3 -z-10 h-[600px] w-[600px] rounded-full bg-red/20 blur-[180px]" />
-
-      {/* Side rails */}
-      <div className="pointer-events-none absolute left-6 top-0 hidden h-full flex-col items-start justify-between py-28 text-[10px] uppercase tracking-[0.4em] text-silver lg:flex">
-        <span className="rotate-180 [writing-mode:vertical-rl]">
-          Integrity · Est. Redondo Beach
-        </span>
-        <span className="rotate-180 [writing-mode:vertical-rl]">N 33.84° · W 118.38°</span>
-      </div>
-      <div className="pointer-events-none absolute right-6 top-0 hidden h-full flex-col items-end justify-between py-28 text-[10px] uppercase tracking-[0.4em] text-silver lg:flex">
-        <span className="[writing-mode:vertical-rl]">
-          Reel 01 / Hero Sequence
-        </span>
-        <span className="[writing-mode:vertical-rl]">Scroll to engage ↓</span>
-      </div>
-
-      <div className="relative mx-auto flex w-full max-w-[1600px] flex-1 flex-col justify-end px-6 pb-16 pt-40 md:px-12 md:pb-24">
-        {/* Kicker */}
-        <div className="mb-8 flex items-center gap-3 text-[11px] font-medium uppercase tracking-[0.4em] text-silver">
-          <span className="h-px w-10 bg-red" />
-          <span>Ceramic coating · Paint correction · Detail</span>
-        </div>
-
-        {/* Headline */}
-        <div ref={titleRef} className="transition-transform duration-300 ease-out">
-          <h1 className="font-display text-[18vw] leading-[0.82] tracking-tight text-off md:text-[11.5vw]">
-            PROFESSIONAL
-            <br />
-            <span className="relative inline-block">
-              AUTO CARE
-              <span className="absolute -right-6 -top-4 font-mono text-base text-red md:text-xl">
-                ®
-              </span>
-            </span>
-            <span className="text-red">.</span>
-          </h1>
-        </div>
-
-        {/* Sub + CTAs */}
-        <div className="mt-10 grid gap-10 md:mt-12 md:grid-cols-12 md:gap-6">
-          <p className="max-w-md text-lg leading-relaxed text-off/85 md:col-span-5 md:text-xl">
-            Redondo Beach's reference studio for ceramic coating, paint correction and the
-            kind of detail work that stops people in parking lots. Owner-operated by Mike.
-          </p>
-
-          <div className="flex flex-wrap items-center gap-4 md:col-span-7 md:justify-end">
-            <a
-              href="#contact"
-              className="btn-sweep group flex items-center gap-3 bg-red px-7 py-5 text-xs font-semibold uppercase tracking-[0.25em] text-white"
-              style={{ ["--tw-ring-color" as never]: "transparent" }}
-            >
-              <span>Request a quote</span>
-              <svg
-                viewBox="0 0 24 24"
-                className="h-4 w-4 transition-transform duration-500 group-hover:translate-x-1"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-              >
-                <path d="M5 12h14M13 5l7 7-7 7" />
-              </svg>
-            </a>
-            <a
-              href={business.phoneHref}
-              className="group flex items-center gap-3 border border-off/50 px-7 py-5 text-xs font-semibold uppercase tracking-[0.25em] text-off transition-colors hover:border-red hover:text-red"
-            >
-              <span className="h-2 w-2 bg-red" />
-              Call {business.phone}
-            </a>
+      <div className="mx-auto flex min-h-[790px] max-w-[1600px] flex-col px-6 pb-7 pt-28 md:min-h-[820px] md:px-12 md:pb-8 lg:min-h-[850px]">
+        <div className="flex flex-1 items-center pt-20 md:pt-24">
+          <div className="max-w-[760px] pt-12 lg:pt-20">
+            <div className="mb-6 flex items-center gap-3 text-[10px] font-semibold uppercase tracking-[0.34em] text-off/80 md:text-[11px]"><span className="h-px w-11 bg-red" /><span>Ceramic coating</span><span className="text-red">•</span><span>Paint correction</span><span className="text-red">•</span><span>Detail</span></div>
+            <h1 className="font-display text-[17vw] leading-[.79] tracking-[-.035em] text-white sm:text-[15vw] md:text-[9.2vw] lg:text-[8.2rem] xl:text-[9.5rem]">PROFESSIONAL<br /><span className="text-red">AUTO CARE.</span></h1>
+            <p className="mt-8 max-w-[470px] text-base leading-relaxed text-off/88 md:mt-9 md:text-xl md:leading-[1.55]">Redondo Beach&apos;s reference studio for ceramic coating, paint correction and the kind of detail work that stops people in parking lots. Owner-operated by Mike.</p>
+            <div className="mt-8 flex flex-wrap gap-3 md:mt-10 md:gap-5">
+              <a href="#contact" className="group inline-flex items-center gap-3 rounded-md bg-red px-6 py-4 text-xs font-bold uppercase tracking-[.16em] text-white transition duration-300 hover:-translate-y-0.5 hover:bg-[#ff1818] hover:shadow-[0_12px_34px_rgba(224,6,6,.3)] md:px-8">Request a quote<svg viewBox="0 0 24 24" className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 5l7 7-7 7" /></svg></a>
+              <a href={business.phoneHref} className="group inline-flex items-center gap-3 rounded-md border border-white/60 bg-black/20 px-5 py-4 text-xs font-bold uppercase tracking-[.12em] text-white backdrop-blur-sm transition duration-300 hover:-translate-y-0.5 hover:border-red hover:bg-red/10 md:px-6"><svg viewBox="0 0 24 24" className="h-4 w-4 text-red" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.4 19.4 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.8.3 1.6.6 2.3a2 2 0 0 1-.5 2.1L8 9.3a16 16 0 0 0 6.7 6.7l1.2-1.2a2 2 0 0 1 2.1-.5c.7.3 1.5.5 2.3.6a2 2 0 0 1 1.7 2Z" /></svg>Call {business.phone}</a>
+            </div>
           </div>
         </div>
-
-        {/* Bottom data bar */}
-        <div className="mt-16 grid grid-cols-2 gap-6 border-t border-steel/40 pt-6 text-[11px] uppercase tracking-[0.3em] text-silver md:mt-20 md:grid-cols-4">
-          <div>
-            <div className="text-silver/70">Location</div>
-            <div className="mt-1 text-off">{business.city}, {business.state}</div>
-          </div>
-          <div>
-            <div className="text-silver/70">Hours</div>
-            <div className="mt-1 text-off">09:00 — 18:00 · Daily</div>
-          </div>
-          <div>
-            <div className="text-silver/70">Services</div>
-            <div className="mt-1 text-off">06 Specialized</div>
-          </div>
-          <div>
-            <div className="text-silver/70">Reviews</div>
-            <div className="mt-1 text-off">55 · Excellent</div>
-          </div>
-        </div>
-      </div>
-
-      {/* Scroll indicator */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-5 flex justify-center text-[10px] uppercase tracking-[0.4em] text-silver">
-        <div className="flex items-center gap-3">
-          <span>Scroll</span>
-          <span className="relative block h-10 w-px overflow-hidden bg-steel">
-            <span className="absolute inset-x-0 top-0 h-4 bg-red scan-line" />
-          </span>
+        <div className="grid grid-cols-1 border-t border-white/20 pt-5 sm:grid-cols-2 md:grid-cols-4 md:pt-7">
+          {details.map((detail, index) => <div key={detail.label} className={`flex min-h-[74px] items-center gap-4 py-4 md:px-7 md:py-2 ${index > 0 ? "md:border-l md:border-white/20" : ""}`}><span className="h-10 w-10 shrink-0 text-red"><DetailIcon type={detail.icon} /></span><div><div className="text-[10px] font-semibold uppercase tracking-[.2em] text-off/75">{detail.label}</div><div className="mt-1 whitespace-nowrap text-sm font-bold uppercase tracking-[.08em] text-white md:text-[13px]">{detail.value}</div></div></div>)}
         </div>
       </div>
     </section>

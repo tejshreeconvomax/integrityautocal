@@ -1,0 +1,238 @@
+.card {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  min-height: 92px;
+  align-items: center;
+  gap: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 18px;
+  background: rgba(13, 13, 13, 0.94);
+  padding: 16px 18px;
+  color: #f5f5f4;
+  text-decoration: none;
+  transition:
+    transform 0.35s ease,
+    background 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.radarMap {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url("/service-areas-radar-map.png");
+  background-position: right 8% top 2%;
+  background-repeat: no-repeat;
+  background-size: min(76vw, 1080px) auto;
+  opacity: 0.24;
+  mix-blend-mode: screen;
+  mask-image: linear-gradient(to left, black 5%, rgba(0, 0, 0, 0.72) 46%, transparent 83%);
+}
+
+.hoverSurface {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0;
+  background:
+    radial-gradient(ellipse at 12% 55%, rgba(149, 10, 6, 0.56), transparent 58%),
+    linear-gradient(105deg, rgba(59, 5, 4, 0.98), rgba(12, 10, 10, 0.96));
+  transition: opacity 0.35s ease;
+}
+
+.card:hover,
+.card:focus-visible {
+  transform: translateY(-6px);
+  border-color: #e10600;
+  box-shadow: 0 18px 34px -22px rgba(225, 6, 0, 0.95);
+}
+
+.card:hover .hoverSurface,
+.card:focus-visible .hoverSurface {
+  opacity: 1;
+}
+
+.pin,
+.index,
+.name,
+.hq,
+.meta,
+.arrow {
+  position: relative;
+  z-index: 1;
+}
+
+.pin {
+  display: inline-flex;
+  height: 50px;
+  width: 50px;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(225, 6, 0, 0.78);
+  border-radius: 14px;
+  background: linear-gradient(145deg, #e10600, #7b0603);
+  color: #fff;
+  box-shadow: 0 10px 22px -14px rgba(225, 6, 0, 0.85);
+}
+
+.pin svg {
+  height: 26px;
+  width: 26px;
+}
+
+.index {
+  flex: none;
+  border-left: 1px solid rgba(255, 255, 255, 0.16);
+  padding-left: 16px;
+  font-family: var(--font-display), Impact, sans-serif;
+  font-size: 1.75rem;
+  line-height: 1;
+  color: rgba(245, 245, 244, 0.45);
+}
+
+.name {
+  min-width: 0;
+  font-family: var(--font-display), Impact, sans-serif;
+  font-size: clamp(1.45rem, 2vw, 2.05rem);
+  line-height: 0.95;
+  letter-spacing: 0.02em;
+  color: #f5f5f4;
+}
+
+.hq {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  border: 1px solid #e10600;
+  border-radius: 5px;
+  background: rgba(225, 6, 0, 0.1);
+  padding: 4px 8px;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: #ff514b;
+}
+
+.meta {
+  margin-left: auto;
+  white-space: nowrap;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.21em;
+  color: rgba(245, 245, 244, 0.7);
+}
+
+.arrow {
+  display: inline-flex;
+  height: 40px;
+  width: 40px;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(225, 6, 0, 0.55);
+  border-radius: 10px;
+  background: rgba(225, 6, 0, 0.12);
+  color: #ff514b;
+  transition:
+    transform 0.35s ease,
+    background 0.35s ease,
+    border-color 0.35s ease,
+    color 0.35s ease;
+}
+
+.arrow svg,
+.cta svg {
+  height: 19px;
+  width: 19px;
+}
+
+.card:hover .arrow,
+.card:focus-visible .arrow {
+  transform: translateX(5px);
+  border-color: #e10600;
+  background: #e10600;
+  color: #fff;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  align-self: flex-start;
+  border: 1px solid #ff3b35;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #e10600, #a10703);
+  padding: 15px 20px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: #fff;
+  box-shadow: 0 16px 28px -20px rgba(225, 6, 0, 0.95);
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    filter 0.35s ease;
+}
+
+.cta:hover,
+.cta:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 34px -17px rgba(225, 6, 0, 0.95);
+  filter: brightness(1.08);
+}
+
+@media (max-width: 767px) {
+  .card {
+    min-height: 82px;
+    gap: 12px;
+    padding: 14px;
+  }
+
+  .pin {
+    height: 44px;
+    width: 44px;
+    border-radius: 12px;
+  }
+
+  .pin svg {
+    height: 22px;
+    width: 22px;
+  }
+
+  .index {
+    padding-left: 12px;
+    font-size: 1.45rem;
+  }
+
+  .name {
+    font-size: 1.4rem;
+  }
+
+  .meta {
+    display: none;
+  }
+
+  .arrow {
+    height: 36px;
+    width: 36px;
+    margin-left: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .hoverSurface,
+  .arrow,
+  .cta {
+    transition-duration: 0.01ms;
+  }
+}

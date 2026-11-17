@@ -1,98 +1,65 @@
 import Link from "next/link";
 import { serviceAreas } from "../../data/business";
+import styles from "./Areas.module.css";
 
-// Which areas have dedicated detail pages
 const slugMap: Record<string, string> = {
   "Redondo Beach": "/concept-1/areas/redondo-beach",
 };
 
 export default function Areas() {
   return (
-    <section
-      id="areas"
-      className="relative overflow-hidden bg-ink py-24 md:py-32"
-    >
-      {/* Soft red ambient */}
-      <div className="pointer-events-none absolute -left-32 top-1/3 h-96 w-96 rounded-full bg-red/10 blur-[160px]" />
+    <section id="areas" className="relative isolate overflow-hidden bg-[#080808] py-24 md:py-32">
+      <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(ellipse_70%_95%_at_86%_72%,rgba(124,8,5,0.26),transparent_62%),radial-gradient(ellipse_52%_65%_at_14%_10%,rgba(105,7,4,0.16),transparent_68%),linear-gradient(120deg,#080808_0%,#120605_52%,#080808_100%)]" />
+      <div className={styles.radarMap} aria-hidden="true" />
 
-      <div className="mx-auto max-w-[1600px] px-6 md:px-12">
-        <div className="mb-14 grid gap-6 md:grid-cols-12 md:items-end">
-          <div className="md:col-span-7">
-            <div className="mb-6 flex items-center gap-3 text-[11px] uppercase tracking-[0.4em] text-silver">
-              <span className="h-px w-10 bg-red" />
-              <span>Service areas · 07 Cities</span>
+      <div className="relative z-10 mx-auto max-w-[1600px] px-6 md:px-12">
+        <div className="mb-14 grid gap-9 lg:mb-16 lg:grid-cols-12 lg:items-end">
+          <div className="lg:col-span-6">
+            <div className="mb-6 flex items-center gap-3 text-[10px] font-medium uppercase tracking-[0.4em] text-silver">
+              <span className="h-px w-12 bg-red" />
+              <span>Service areas · 07 cities</span>
             </div>
-            <h2 className="font-display text-6xl leading-[0.9] tracking-tight text-off md:text-[7vw]">
-              SERVICE
+            <h2 className="font-display text-6xl leading-[0.78] tracking-tight md:text-[7vw] lg:text-[6.2vw]">
+              <span className="text-off">SERVICE</span>
               <br />
-              AREAS<span className="text-red">.</span>
+              <span className="text-red">AREAS</span><span className="text-off">.</span>
             </h2>
           </div>
-          <p className="md:col-span-5 max-w-md text-base text-silver md:ml-auto md:text-right md:text-lg">
+          <p className="max-w-xl border-l-2 border-red pl-5 text-base leading-relaxed text-off/90 sm:text-lg lg:col-span-5 lg:col-start-8 lg:mb-2">
             In-shop in Redondo Beach. Mobile across the surrounding six cities. Same
             standards, same hands.
           </p>
         </div>
 
-        <ul className="grid grid-cols-1 gap-px bg-steel/40 md:grid-cols-2">
-          {serviceAreas.map((a, i) => {
-            const href = slugMap[a];
-            const isHQ = a === "Redondo Beach";
-            const content = (
-              <div className="relative isolate flex items-center justify-between gap-4 overflow-hidden bg-ink px-6 py-6 transition-colors duration-500 group-hover:bg-carbon md:px-8 md:py-7">
-                {/* Red left bar */}
-                <span className="pointer-events-none absolute inset-y-0 left-0 w-0.5 origin-top scale-y-0 bg-red transition-transform duration-500 group-hover:scale-y-100" />
-                {/* Shimmer */}
-                <span className="pointer-events-none absolute inset-y-0 -left-full w-1/2 skew-x-12 bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-[300%]" />
-
-                <div className="flex items-baseline gap-6">
-                  <span className="font-mono text-xs text-silver">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <span className="font-display text-3xl tracking-wide text-off transition-colors group-hover:text-red md:text-4xl">
-                    {a}
-                  </span>
-                  {isHQ && (
-                    <span className="hidden items-center gap-1.5 border border-red bg-red/10 px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.25em] text-red md:inline-flex">
-                      HQ
-                    </span>
-                  )}
-                </div>
-
-                <div className="flex items-center gap-4">
-                  <span className="hidden text-xs uppercase tracking-[0.25em] text-silver md:inline">
-                    CA · 06 modules
-                  </span>
-                  <span
-                    className={`inline-flex h-10 w-10 items-center justify-center border transition-all duration-500 ${
-                      href
-                        ? "border-steel text-off group-hover:border-red group-hover:bg-red group-hover:text-white"
-                        : "border-steel/40 text-silver"
-                    }`}
-                  >
-                    <svg
-                      viewBox="0 0 24 24"
-                      className="h-4 w-4"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                    >
-                      <path d="M5 12h14M13 5l7 7-7 7" strokeLinecap="square" />
-                    </svg>
-                  </span>
-                </div>
-              </div>
+        <ul className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5">
+          {serviceAreas.map((area, index) => {
+            const href = slugMap[area];
+            const isHQ = area === "Redondo Beach";
+            const card = (
+              <>
+                <span className={styles.hoverSurface} />
+                <span className={styles.pin} aria-hidden="true">
+                  <LocationIcon />
+                </span>
+                <span className={styles.index}>{String(index + 1).padStart(2, "0")}</span>
+                <span className={styles.name}>{area}</span>
+                {isHQ && <span className={styles.hq}>HQ</span>}
+                <span className={styles.meta}>CA · 06 modules</span>
+                <span className={styles.arrow} aria-hidden="true">
+                  <ArrowIcon />
+                </span>
+              </>
             );
 
             return (
-              <li key={a} className="group">
+              <li key={area}>
                 {href ? (
-                  <Link href={href as never} className="block">
-                    {content}
+                  <Link href={href as never} className={styles.card}>
+                    {card}
                   </Link>
                 ) : (
-                  <a href="#contact" className="block">
-                    {content}
+                  <a href="#contact" className={styles.card}>
+                    {card}
                   </a>
                 )}
               </li>
@@ -100,17 +67,33 @@ export default function Areas() {
           })}
         </ul>
 
-        <p className="mt-10 flex flex-wrap items-center justify-between gap-4 text-xs uppercase tracking-[0.3em] text-silver">
-          <span>+ Outside the radius? Call the shop — we'll figure it out.</span>
-          <a
-            href="#contact"
-            className="group inline-flex items-center gap-3 text-off"
-          >
-            <span className="h-px w-10 bg-red transition-all duration-500 group-hover:w-20" />
+        <div className="mt-10 flex flex-col gap-6 border-l-2 border-red pl-5 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-xs uppercase tracking-[0.25em] text-off/90">
+            Outside the radius? Call the shop — we&apos;ll figure it out.
+          </p>
+          <a href="#contact" className={styles.cta}>
             Request a quote
+            <ArrowIcon />
           </a>
-        </p>
+        </div>
       </div>
     </section>
+  );
+}
+
+function LocationIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+      <path d="M20 10c0 5.25-8 11-8 11S4 15.25 4 10a8 8 0 1 1 16 0Z" strokeLinejoin="round" />
+      <circle cx="12" cy="10" r="2.5" />
+    </svg>
+  );
+}
+
+function ArrowIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+      <path d="M5 12h14M13 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
   );
 }

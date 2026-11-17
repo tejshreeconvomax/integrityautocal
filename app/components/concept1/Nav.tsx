@@ -34,10 +34,8 @@ export default function Nav() {
   return (
     <>
       <header
-        className={`fixed inset-x-0 top-0 z-50 transition-colors duration-500 ${
-          scrolled
-            ? "bg-ink/85 backdrop-blur-xl border-b border-steel/40"
-            : "bg-transparent"
+        className={`fixed inset-x-0 top-0 z-50 border-b border-white/15 bg-[#080808]/95 backdrop-blur-xl transition-shadow duration-500 ${
+          scrolled ? "shadow-[0_8px_28px_rgba(0,0,0,.24)]" : ""
         }`}
       >
         <nav className="flex items-center justify-between gap-6 px-6 py-3 md:px-10">
@@ -64,16 +62,23 @@ export default function Nav() {
                   className="group relative whitespace-nowrap text-[11px] font-medium uppercase tracking-[0.2em] text-off/80 transition-colors hover:text-off xl:text-xs xl:tracking-[0.25em]"
                 >
                   {l.label}
-                  <span className="absolute -bottom-2 left-0 h-px w-full origin-left scale-x-0 bg-red transition-transform duration-500 group-hover:scale-x-100" />
+                  <span className={`absolute -bottom-2 left-0 h-0.5 w-full origin-left bg-red transition-transform duration-300 group-hover:scale-x-100 ${l.label === "Home" ? "scale-x-100" : "scale-x-0"}`} />
                 </Link>
               </li>
             ))}
           </ul>
 
           <div className="flex items-center gap-3 md:gap-4">
+            <a
+              href="tel:+13236888846"
+              className="hidden items-center gap-2 border-r border-white/25 pr-5 text-sm font-semibold text-off transition-colors hover:text-red xl:flex"
+            >
+              <svg viewBox="0 0 24 24" className="h-4 w-4 text-red" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.4 19.4 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.8.3 1.6.6 2.3a2 2 0 0 1-.5 2.1L8 9.3a16 16 0 0 0 6.7 6.7l1.2-1.2a2 2 0 0 1 2.1-.5c.7.3 1.5.5 2.3.6a2 2 0 0 1 1.7 2Z" /></svg>
+              323-688-8846
+            </a>
             <Link
               href={"/concept-1#contact" as never}
-              className="group btn-sweep hidden items-center gap-2 whitespace-nowrap border border-off/60 px-4 py-2.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-off transition-colors duration-500 hover:text-white xl:inline-flex xl:px-5 xl:py-3 xl:tracking-[0.25em]"
+              className="group hidden items-center gap-2 whitespace-nowrap rounded-md bg-red px-4 py-2.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-white transition duration-300 hover:-translate-y-0.5 hover:bg-[#ff1818] hover:shadow-[0_8px_22px_rgba(224,6,6,.24)] lg:inline-flex xl:px-5 xl:py-3"
             >
               Get a quote
               <svg
