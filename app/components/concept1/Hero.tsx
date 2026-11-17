@@ -50,16 +50,6 @@ export default function Hero() {
       {/* Red flare */}
       <div className="pointer-events-none absolute -right-40 top-1/3 -z-10 h-[600px] w-[600px] rounded-full bg-red/20 blur-[180px]" />
 
-      {/* Technical grid */}
-      <div
-        className="pointer-events-none absolute inset-0 -z-10 opacity-[0.08]"
-        style={{
-          backgroundImage:
-            "linear-gradient(to right, #fff 1px, transparent 1px), linear-gradient(to bottom, #fff 1px, transparent 1px)",
-          backgroundSize: "80px 80px",
-        }}
-      />
-
       {/* Side rails */}
       <div className="pointer-events-none absolute left-6 top-0 hidden h-full flex-col items-start justify-between py-28 text-[10px] uppercase tracking-[0.4em] text-silver lg:flex">
         <span className="rotate-180 [writing-mode:vertical-rl]">
