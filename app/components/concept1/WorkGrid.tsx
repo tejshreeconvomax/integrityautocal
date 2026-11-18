@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useRef } from "react";
 
 const shots = [
   {
@@ -64,6 +67,15 @@ const shots = [
 ];
 
 export default function WorkGrid() {
+  const sliderRef = useRef<HTMLDivElement>(null);
+
+  const moveSlider = (direction: number) => {
+    sliderRef.current?.scrollBy({
+      left: direction * sliderRef.current.clientWidth * 0.9,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <section id="work" className="relative bg-ink py-24 md:py-32">
       <div className="mx-auto max-w-[1600px] px-6 md:px-12">
@@ -102,7 +114,7 @@ export default function WorkGrid() {
           </div>
         </div>
 
-        <div className="grid grid-cols-6 gap-3 md:gap-4">
+        <div ref={sliderRef} className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:grid md:grid-cols-6 md:gap-4 md:overflow-visible md:pb-0">
           {shots.map((shot, i) => {
             // 10 cards in 4 rows: [2,2,2] [3,3] [2,2,2] [3,3]
             const spans = [
@@ -122,7 +134,7 @@ export default function WorkGrid() {
               <a
                 key={shot.src}
                 href="#contact"
-                className={`${spans[i]} group relative isolate block overflow-hidden`}
+                className={`w-[calc(100vw-3rem)] shrink-0 snap-start ${spans[i]} group relative isolate block overflow-hidden md:w-auto`}
               >
                 <div className="relative aspect-[4/3] md:aspect-[16/9]">
                   <Image
@@ -169,6 +181,18 @@ export default function WorkGrid() {
               </a>
             );
           })}
+        </div>
+
+        <div className="mt-3 flex items-center justify-between md:hidden">
+          <span className="text-[10px] uppercase tracking-[0.28em] text-silver">Swipe to explore</span>
+          <div className="flex gap-2">
+            <button type="button" onClick={() => moveSlider(-1)} aria-label="Previous work item" className="inline-flex h-10 w-10 items-center justify-center border border-white/20 text-off transition-colors hover:border-red hover:text-red">
+              <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="m15 5-7 7 7 7" /></svg>
+            </button>
+            <button type="button" onClick={() => moveSlider(1)} aria-label="Next work item" className="inline-flex h-10 w-10 items-center justify-center border border-white/20 text-off transition-colors hover:border-red hover:text-red">
+              <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="m9 5 7 7-7 7" /></svg>
+            </button>
+          </div>
         </div>
 
         <div className="mt-10 flex flex-wrap items-center justify-between gap-4 text-xs uppercase tracking-[0.3em] text-silver">

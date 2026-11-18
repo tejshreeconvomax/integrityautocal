@@ -228,6 +228,45 @@
   }
 }
 
+/* A two-column tablet has considerably less horizontal room than the desktop
+   cards. Keep the essential place identity readable and reserve the compact
+   module label for the wider desktop treatment. */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .card {
+    min-height: 108px;
+    gap: 12px;
+    padding: 16px;
+  }
+
+  .pin {
+    height: 48px;
+    width: 48px;
+  }
+
+  .pin svg {
+    height: 24px;
+    width: 24px;
+  }
+
+  .index {
+    padding-left: 12px;
+    font-size: 1.55rem;
+  }
+
+  .name {
+    font-size: 1.35rem;
+    line-height: 0.92;
+  }
+
+  .meta {
+    display: none;
+  }
+
+  .arrow {
+    margin-left: auto;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .card,
   .hoverSurface,

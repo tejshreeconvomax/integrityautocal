@@ -14,17 +14,6 @@ const concepts = [
     font: "font-display tracking-tight",
   },
   {
-    num: "02",
-    slug: "concept-2",
-    name: "Editorial",
-    kicker: "Luxury · Quiet confidence",
-    headline: "The art of\nautomotive\nperfection.",
-    description:
-      "Serif-led editorial design with asymmetric grids, generous whitespace, and vertical labels. A luxury automotive magazine, made digital.",
-    accent: "from-off/10 via-silver/5 to-transparent",
-    font: "font-serif italic tracking-tight",
-  },
-  {
     num: "03",
     slug: "concept-3",
     name: "Technical",
@@ -61,7 +50,7 @@ export default function SelectorPage() {
         <div className="grid gap-10 md:grid-cols-12">
           <div className="md:col-span-7">
             <p className="mb-6 text-[11px] uppercase tracking-[0.4em] text-silver">
-              <span className="text-red">●</span>&nbsp;&nbsp;Three directions · One brand
+              <span className="text-red">●</span>&nbsp;&nbsp;Two directions · One brand
             </p>
             <h1 className="font-display text-[13vw] leading-[0.85] tracking-tight text-off md:text-[9vw]">
               CHOOSE THE
@@ -71,7 +60,7 @@ export default function SelectorPage() {
           </div>
           <div className="flex items-end md:col-span-5">
             <p className="max-w-md text-base leading-relaxed text-silver md:text-lg">
-              Three completely independent concepts for a Redondo Beach ceramic coating,
+              Two completely independent concepts for a Redondo Beach ceramic coating,
               paint correction and detailing studio. Each tells the same story — the
               Integrity Auto Salon story — through a different voice.
             </p>
@@ -82,7 +71,7 @@ export default function SelectorPage() {
       {/* Concept cards */}
       <section className="relative z-10 border-t border-steel/40">
         <ul className="divide-y divide-steel/40">
-          {concepts.map((c, i) => (
+          {concepts.map((c) => (
             <li key={c.slug} className="group relative">
               <Link
                 href={`/${c.slug}` as never}

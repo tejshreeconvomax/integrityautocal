@@ -15,8 +15,8 @@ export default function CTABanner() {
       <div className="absolute inset-0 -z-10 bg-ink/85" />
       <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-r from-red/20 via-transparent to-transparent" />
 
-      <div className="mx-auto grid max-w-[1600px] gap-10 px-6 py-20 md:grid-cols-12 md:items-center md:gap-6 md:px-12 md:py-28">
-        <div className="md:col-span-8">
+      <div className="mx-auto grid max-w-[1600px] gap-10 px-6 py-20 md:grid-cols-2 md:items-center md:gap-8 md:px-12 md:py-28 lg:grid-cols-12 lg:gap-6">
+        <div className="lg:col-span-8">
           <div className="mb-6 flex items-center gap-3 text-[11px] uppercase tracking-[0.4em] text-silver">
             <span className="h-px w-10 bg-red" />
             <span>Book the shop</span>
@@ -28,10 +28,10 @@ export default function CTABanner() {
           </h2>
         </div>
 
-        <div className="flex flex-col gap-4 md:col-span-4 md:items-end">
+        <div className="flex flex-col gap-4 md:items-stretch lg:col-span-4 lg:items-end">
           <a
             href="#contact"
-            className="btn-sweep group flex w-full items-center justify-between gap-4 bg-red px-7 py-5 text-xs font-semibold uppercase tracking-[0.3em] text-white md:w-auto"
+            className="btn-sweep group flex w-full items-center justify-between gap-4 bg-red px-7 py-5 text-xs font-semibold uppercase tracking-[0.3em] text-white"
           >
             Request a quote
             <svg
@@ -46,7 +46,7 @@ export default function CTABanner() {
           </a>
           <a
             href={business.phoneHref}
-            className="group flex w-full items-center justify-between gap-4 border border-off/50 px-7 py-5 text-xs font-semibold uppercase tracking-[0.3em] text-off transition-colors hover:border-red hover:text-red md:w-auto"
+            className="group flex w-full items-center justify-between gap-4 border border-off/50 px-7 py-5 text-xs font-semibold uppercase tracking-[0.3em] text-off transition-colors hover:border-red hover:text-red"
           >
             Call {business.phone}
             <span className="h-2 w-2 bg-red" />

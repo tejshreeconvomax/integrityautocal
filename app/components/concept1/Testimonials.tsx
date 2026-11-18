@@ -1,6 +1,18 @@
+"use client";
+
+import { useRef } from "react";
 import { testimonials } from "../../data/business";
 
 export default function Testimonials() {
+  const sliderRef = useRef<HTMLDivElement>(null);
+
+  const moveSlider = (direction: number) => {
+    sliderRef.current?.scrollBy({
+      left: direction * sliderRef.current.clientWidth * 0.92,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <section className="relative overflow-hidden bg-ink py-24 md:py-32">
       <div className="mx-auto max-w-[1600px] px-6 md:px-12">
@@ -34,11 +46,11 @@ export default function Testimonials() {
           </div>
         </div>
 
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+        <div ref={sliderRef} className="flex snap-x snap-mandatory gap-5 overflow-x-auto pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:grid md:grid-cols-2 md:gap-5 md:overflow-visible md:pb-0 lg:grid-cols-4">
           {testimonials.map((t, i) => (
             <blockquote
               key={t.name}
-              className="group relative isolate flex min-h-[370px] h-full flex-col justify-between overflow-hidden border border-white/10 bg-[#0f0f0f] p-7 transition-[transform,border-color,box-shadow] duration-300 ease-out hover:-translate-y-1 hover:border-red/80 hover:shadow-[0_24px_58px_-26px_rgba(225,6,0,0.6)] md:p-8"
+              className="group relative isolate flex min-h-[370px] w-[calc(100vw-3rem)] shrink-0 snap-start flex-col justify-between overflow-hidden border border-white/10 bg-[#0f0f0f] p-7 transition-[transform,border-color,box-shadow] duration-300 ease-out hover:-translate-y-1 hover:border-red/80 hover:shadow-[0_24px_58px_-26px_rgba(225,6,0,0.6)] md:h-full md:w-auto md:p-8"
             >
               <span className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_88%_5%,rgba(225,6,0,0.2),transparent_42%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
               <span className="pointer-events-none absolute inset-x-0 top-0 z-10 h-0.5 origin-left scale-x-[0.12] bg-red transition-transform duration-300 group-hover:scale-x-100" />
@@ -83,6 +95,18 @@ export default function Testimonials() {
               </footer>
             </blockquote>
           ))}
+        </div>
+
+        <div className="mt-3 flex items-center justify-between md:hidden">
+          <span className="text-[10px] uppercase tracking-[0.28em] text-silver">Swipe for more reviews</span>
+          <div className="flex gap-2">
+            <button type="button" onClick={() => moveSlider(-1)} aria-label="Previous customer review" className="inline-flex h-10 w-10 items-center justify-center border border-white/20 text-off transition-colors hover:border-red hover:text-red">
+              <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="m15 5-7 7 7 7" /></svg>
+            </button>
+            <button type="button" onClick={() => moveSlider(1)} aria-label="Next customer review" className="inline-flex h-10 w-10 items-center justify-center border border-white/20 text-off transition-colors hover:border-red hover:text-red">
+              <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="m9 5 7 7-7 7" /></svg>
+            </button>
+          </div>
         </div>
       </div>
     </section>

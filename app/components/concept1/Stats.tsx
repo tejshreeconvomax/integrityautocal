@@ -7,16 +7,20 @@ export default function Stats() {
       <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_58%_125%_at_50%_50%,rgba(120,8,5,0.24),transparent_68%),linear-gradient(90deg,#050505_0%,#110504_50%,#050505_100%)]" />
 
       <div className="relative mx-auto max-w-[1600px] px-6 md:px-10 lg:px-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-2 md:grid-cols-4">
           {stats.map((stat, index) => (
             <article
               key={stat.v}
-              className={`group relative flex min-h-[210px] flex-col items-center justify-center px-6 py-6 text-center transition-transform duration-500 hover:-translate-y-1 sm:min-h-[230px] lg:px-8 ${
-                index > 0 ? "border-t border-red/25 sm:border-t-0 lg:border-l" : ""
-              } ${index === 2 ? "sm:border-t sm:border-red/25 lg:border-t-0" : ""}`}
+              className={`group relative flex min-h-[176px] flex-col items-center justify-center px-3 py-6 text-center transition-transform duration-500 hover:-translate-y-1 sm:min-h-[210px] sm:px-5 lg:min-h-[230px] lg:px-8 ${
+                index === 1 ? "border-l border-red/25" : ""
+              } ${
+                index === 2 ? "border-t border-red/25 md:border-l md:border-t-0" : ""
+              } ${
+                index === 3 ? "border-l border-t border-red/25 md:border-t-0" : ""
+              }`}
             >
               {index > 0 && (
-                <span className="pointer-events-none absolute inset-y-7 left-0 hidden w-px bg-gradient-to-b from-transparent via-red to-transparent opacity-70 shadow-[0_0_12px_rgba(225,6,0,0.9)] lg:block" />
+                <span className="pointer-events-none absolute inset-y-7 left-0 hidden w-px bg-gradient-to-b from-transparent via-red to-transparent opacity-70 shadow-[0_0_12px_rgba(225,6,0,0.9)] md:block" />
               )}
 
               <div className="relative mb-5 flex h-[58px] w-[58px] items-center justify-center transition-transform duration-500 group-hover:scale-110 sm:h-[64px] sm:w-[64px]">

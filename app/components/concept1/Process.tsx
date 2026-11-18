@@ -1,7 +1,37 @@
+"use client";
+
+import { useCallback, useEffect, useRef, useState } from "react";
 import { process } from "../../data/business";
 import styles from "./Process.module.css";
 
 export default function Process() {
+  const sliderRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const goTo = useCallback((index: number) => {
+    const nextIndex = (index + process.length) % process.length;
+    const card = sliderRef.current?.children.item(nextIndex) as HTMLElement | null;
+    card?.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "start" });
+    setActiveIndex(nextIndex);
+  }, []);
+
+  useEffect(() => {
+    const mobile = window.matchMedia("(max-width: 767px)");
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (!mobile.matches || reducedMotion.matches) return;
+
+    const interval = window.setInterval(() => {
+      setActiveIndex((current) => {
+        const next = (current + 1) % process.length;
+        const card = sliderRef.current?.children.item(next) as HTMLElement | null;
+        card?.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "start" });
+        return next;
+      });
+    }, 5000);
+
+    return () => window.clearInterval(interval);
+  }, []);
+
   return (
     <section
       id="process"
@@ -28,11 +58,11 @@ export default function Process() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4 lg:gap-5">
+        <div ref={sliderRef} className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:grid md:grid-cols-2 md:overflow-visible md:pb-0 lg:grid-cols-4 lg:gap-5">
           {process.map((phase, index) => (
             <article
               key={phase.step}
-              className={`${styles.card} relative flex min-h-[330px] flex-col overflow-hidden rounded-[22px] border border-white/20 bg-[#0b0a0a] p-7 md:min-h-[350px] md:p-8`}
+              className={`${styles.card} relative flex min-h-[330px] w-[calc(100vw-3rem)] shrink-0 snap-start flex-col overflow-hidden rounded-[22px] border border-white/20 bg-[#0b0a0a] p-7 md:min-h-[350px] md:w-auto md:p-8`}
             >
               <div className="flex items-start justify-between gap-6">
                 <div className="relative flex h-16 w-16 items-center justify-center overflow-hidden rounded-2xl border border-red/70 bg-gradient-to-br from-red to-red-deep text-white shadow-[0_8px_20px_-12px_rgba(225,6,0,0.65)]">
@@ -57,6 +87,29 @@ export default function Process() {
               </div>
             </article>
           ))}
+        </div>
+
+        <div className="mt-3 flex items-center justify-between md:hidden">
+          <div className="flex items-center gap-2" aria-label="Process slider pagination">
+            {process.map((phase, index) => (
+              <button
+                key={phase.step}
+                type="button"
+                aria-label={`Show step ${phase.step}: ${phase.label}`}
+                aria-current={activeIndex === index ? "true" : undefined}
+                onClick={() => goTo(index)}
+                className={`h-1.5 transition-all duration-300 ${activeIndex === index ? "w-8 bg-red" : "w-3 bg-white/30"}`}
+              />
+            ))}
+          </div>
+          <div className="flex gap-2">
+            <button type="button" onClick={() => goTo(activeIndex - 1)} aria-label="Previous process step" className="inline-flex h-10 w-10 items-center justify-center border border-white/20 text-off transition-colors hover:border-red hover:text-red">
+              <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="m15 5-7 7 7 7" /></svg>
+            </button>
+            <button type="button" onClick={() => goTo(activeIndex + 1)} aria-label="Next process step" className="inline-flex h-10 w-10 items-center justify-center border border-white/20 text-off transition-colors hover:border-red hover:text-red">
+              <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="m9 5 7 7-7 7" /></svg>
+            </button>
+          </div>
         </div>
       </div>
     </section>

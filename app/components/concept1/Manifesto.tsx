@@ -21,15 +21,15 @@ const pillars = [
 export default function Manifesto() {
   return (
     <section className="relative overflow-hidden bg-ink py-24 md:py-32">
-      <div className="mx-auto grid max-w-[1600px] gap-14 px-6 md:grid-cols-12 md:gap-10 md:px-12">
+      <div className="mx-auto grid max-w-[1600px] gap-14 px-6 md:px-12 lg:grid-cols-12 lg:gap-10">
         {/* Image column */}
-        <div className="relative md:col-span-5">
-          <div className="relative aspect-[4/5] overflow-hidden">
+        <div className="relative lg:col-span-5">
+          <div className="relative aspect-[4/5] overflow-hidden md:aspect-[16/8] lg:aspect-[4/5]">
             <Image
               src="https://images.unsplash.com/photo-1486496572940-2bb2341fdbdf?auto=format&fit=crop&w=1600&q=80"
               alt="Technician applying ceramic coating on a dark vehicle"
               fill
-              sizes="(min-width: 768px) 40vw, 100vw"
+              sizes="(min-width: 1024px) 40vw, 100vw"
               className="object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/30 to-transparent" />
@@ -47,7 +47,7 @@ export default function Manifesto() {
         </div>
 
         {/* Copy column */}
-        <div className="md:col-span-7">
+        <div className="lg:col-span-7">
           <div className="mb-6 flex items-center gap-3 text-[11px] uppercase tracking-[0.4em] text-silver">
             <span className="h-px w-10 bg-red" />
             <span>Why choose Integrity</span>
@@ -61,7 +61,7 @@ export default function Manifesto() {
           <p className="mt-6 max-w-xl text-base leading-relaxed text-silver md:text-lg">
             We treat every vehicle like a long-term investment. Correction before coating.
             Protection calibrated to the environment it lives in. No shortcuts, no filler
-            services, no selling you anything the car doesn't need.
+            services, no selling you anything the car doesn&apos;t need.
           </p>
 
           <ul className="mt-10 space-y-6 border-l border-steel/60">
